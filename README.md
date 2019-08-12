@@ -1,18 +1,16 @@
-# A&C systems user accounts
+# React typescript empty project
 
-*A&C systems user account management frontend*
-
-![License](https://img.shields.io/badge/license-proprietary-red)
+![License](https://img.shields.io/badge/license-WTFPL-brightgreen)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue)](https://www.typescriptlang.org/) 
 [![Code Style](https://badgen.net/badge/code%20style/airbnb/ff5a5f?icon=airbnb)](https://github.com/airbnb/javascript)
-[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.png?v=101)](https://github.com/ellerbrock/typescript-badges/) 
 
 ##Usage
 
 ###Development
+
 ####Development server
+
 ```bash
-git clone git@bitbucket.org:acwebdev/user-management-frontend.git
-cd user-management-frontend
 yarn
 yarn start
 ```
