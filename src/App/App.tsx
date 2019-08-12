@@ -1,4 +1,7 @@
 import React from 'react';
+import Layout from './Layout';
+import ExampleContainer from './Containers/ExampleContainer';
+import { Switch, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
 
@@ -11,10 +14,16 @@ const theme = createMuiTheme({
   },
 });
 
-const App: React.FunctionComponent = () => {
+const Index = () => {
+  return <Layout children={<ExampleContainer/>}/>;
+};
+
+const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
-      // Rest of your app goes here :)
+      <Switch>
+        <Route exact path={'/'} component={Index}/>
+      </Switch>
     </MuiThemeProvider>
   );
 };

@@ -16,12 +16,27 @@ yarn start
 ```
 This will start the development server on `localhost:3000`
 
+#### Scripts
+
+Run a script using `yarn <script-name>`. To add/edit/remove scripts, see `scripts` section in `package.json`.
+
+| Script | Usage |
+| --- | --- |
+|`start`|Starts the development server on `localhost:3000`|
+|`build`|Compiles and bundles the React app for production usage|
+|`test`|Runs tests if any are available|
+|`lint`|Runs tslint and checks all files for any violations.|
+
 #### TSLint
 This project uses tslint to ensure a consistent code style.
-To enable tslint please see your editor's manual. 
+To enable tslint please see your editor's manual.
+
+⚠ Pull requests with tslint violations **WILL BE DENIED** ⚠
 
 For PHPStorm/WebStorm this is under
 Languages & Frameworks > TypeScript > TSLint > Automatic configuration
+
+Depending on your editor/IDE you might have to change some automatic code completion settings.
 
 ### Production
 React must be compiled to a static asset bundle. Do this by running
