@@ -38,6 +38,12 @@ Languages & Frameworks > TypeScript > TSLint > Automatic configuration
 
 Depending on your editor/IDE you might have to change some automatic code completion settings.
 
+#### Themes
+You can edit the theme in `src/App/App.tsx`. See [material-ui documentation](https://material-ui.com/customization/themes/)
+
+#### Routes
+To render containers based on the URL check `src/App/Routes.tsx`
+
 ### Production
 React must be compiled to a static asset bundle. Do this by running
 ```bash
