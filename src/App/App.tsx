@@ -1,8 +1,8 @@
 import React from 'react';
-import LoginScreen from './Containers/LoginScreen';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
 
+// Edit theme
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -14,7 +14,7 @@ const theme = createMuiTheme({
 const App: React.FunctionComponent = () => {
   return (
     <MuiThemeProvider theme={theme}>
-      <LoginScreen/>
+      // Rest of your app goes here :)
     </MuiThemeProvider>
   );
 };
