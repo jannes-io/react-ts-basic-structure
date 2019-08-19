@@ -25,27 +25,27 @@ const DrawerItemList: React.FunctionComponent<{
 }> = ({ routes }) => {
   const classes = styles();
 
-  const routeSections = routes.map((section, i) => {
-    return <div key={i}>
+  return <>
+    {Object.values(routes).filter(section => !section.hidden).map((section, i) => <div key={i}>
       <Divider component="hr"/>
       <List component="ul">
         {section.name ? <ListSubheader inset>{section.name}</ListSubheader> : null}
-        {section.routes.map(route => <Link to={route.path} className={classes.link}>
-            <ListItem key={route.path} button>
-              {route.icon !== null
-                ? <ListItemIcon>
-                  {route.icon}
-                </ListItemIcon>
-                : null}
-              <ListItemText primary={route.name}/>
-            </ListItem>
-          </Link>,
-        )}
+        {Object.values(section.routes)
+          .filter(route => !route.hidden)
+          .map((route, i) => <Link
+              key={i}
+              to={route.path}
+              className={classes.link}
+            >
+              <ListItem button>
+                {route.icon !== null ? <ListItemIcon>{route.icon}</ListItemIcon> : null}
+                <ListItemText primary={route.name}/>
+              </ListItem>
+            </Link>,
+          )}
       </List>
-    </div>;
-  });
-
-  return <>{routeSections}</>;
+    </div>)}
+  </>;
 };
 
 export default DrawerItemList;

@@ -3,14 +3,11 @@ import Routes, { Route as RouteType, RouteSection as RouteSectionType } from './
 import { Switch, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
+import NotFoundScreen from './Containers/NotFoundScreen';
 
 // Edit theme
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#077485',
-    },
-  },
+  /** Customize theme here **/
 });
 
 const createRoutes = () => {
@@ -24,10 +21,11 @@ const createRoutes = () => {
   const concatRouteSection = (
     acc: React.ReactElement[],
     section: RouteSectionType,
-  ) => acc.concat(acc, section.routes.map(convertRoute));
+  ) => acc.concat(acc, Object.values(section.routes).map(convertRoute));
 
   return <Switch>
-    {Routes.reduce(concatRouteSection, [])}
+    {Object.values(Routes).reduce(concatRouteSection, [])}
+    <Route component={NotFoundScreen}/>
   </Switch>;
 };
 
