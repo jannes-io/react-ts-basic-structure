@@ -1,27 +1,38 @@
 {
-  "name": "ac-user-management-frontend",
+  "name": "ts-basic-structure",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@material-ui/core": "^4.3.1",
-    "@material-ui/icons": "^4.2.1",
-    "@types/jest": "24.0.17",
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/icons": "^4.5.1",
     "@types/node": "12.7.0",
     "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.5",
-    "@types/react-router-dom": "^4.3.4",
-    "clsx": "^1.0.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "typescript": "3.5.3"
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "jest-css-modules": "^2.1.0",
+    "pre-commit": "^1.2.2",
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "lint": "tslint --project ."
+    "test": "react-scripts test --passWithNoTests",
+    "test-no-watch": "react-scripts test --passWithNoTests --watchAll=false",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,10 +47,10 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ],
+    "pre-commit": [
+      "lint",
+      "test-no-watch"
     ]
-  },
-  "devDependencies": {
-    "tslint": "^5.20.0",
-    "tslint-config-airbnb": "^5.11.1"
   }
 }
