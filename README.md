@@ -11,14 +11,14 @@
 #### Development server
 
 ```bash
-yarn
-yarn start
+npm install
+npm run start
 ```
 This will start the development server on `localhost:3000`
 
 #### Scripts
 
-Run a script using `yarn <script-name>`. To add/edit/remove scripts, see `scripts` section in `package.json`.
+Run a script using `npm run <script-name>`. To add/edit/remove scripts, see `scripts` section in `package.json`.
 
 | Script | Usage |
 | --- | --- |
@@ -27,14 +27,11 @@ Run a script using `yarn <script-name>`. To add/edit/remove scripts, see `script
 |`test`|Runs tests if any are available|
 |`lint`|Runs tslint and checks all files for any violations.|
 
-#### TSLint
-This project uses tslint to ensure a consistent code style.
-To enable tslint please see your editor's manual.
+#### ESLint
+This project uses eslint to ensure a consistent code style.
+To enable eslint please see your editor's manual.
 
 ⚠ Pull requests with tslint violations **WILL BE DENIED** ⚠
-
-For PHPStorm/WebStorm this is under
-Languages & Frameworks > TypeScript > TSLint > Automatic configuration
 
 Depending on your editor/IDE you might have to change some automatic code completion settings.
 
@@ -47,6 +44,6 @@ To render containers based on the URL check `src/App/Routes.tsx`
 ### Production
 React must be compiled to a static asset bundle. Do this by running
 ```bash
-yarn build
+npm run build
 ```
 This will copy all files to the `build` directory, where they can then be uploaded to a webserver or static file host.
