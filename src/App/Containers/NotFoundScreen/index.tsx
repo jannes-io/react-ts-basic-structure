@@ -1,7 +1,6 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 
-const NotFoundScreen: React.FunctionComponent = () => {
-  return <div>404: We couldn't find this page.</div>;
-};
+const NotFoundScreen: React.FC = () => <Typography>404: Page not found.</Typography>;
 
 export default NotFoundScreen;

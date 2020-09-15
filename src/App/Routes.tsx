@@ -1,12 +1,12 @@
 import React from 'react';
-import Layout from './Layout';
-import ExampleContainer from './Containers/ExampleContainer';
 import {
   Dashboard as DashboardIcon,
   Layers as LayerIcon,
   BarChart as ChartIcon,
   Info as InfoIcon,
 } from '@material-ui/icons';
+import Layout from './Layout';
+import ExampleContainer from './Containers/ExampleContainer';
 
 export interface Route {
   name: string;
@@ -14,7 +14,7 @@ export interface Route {
   exact: boolean;
   hidden: boolean;
   icon: React.ReactElement | null;
-  component: React.FunctionComponent<{
+  component: React.FC<{
     location: any,
     match: any,
   }>;
@@ -40,25 +40,24 @@ const routes: RouteMap = {
         path: '/',
         exact: true,
         hidden: false,
-        icon: <DashboardIcon/>,
-        component: () =>
-          <Layout routes={routes} children={<ExampleContainer/>}/>,
+        icon: <DashboardIcon />,
+        component: () => <Layout><ExampleContainer /></Layout>,
       },
       security: {
         name: 'Layers',
         path: '/layers',
         exact: false,
         hidden: false,
-        icon: <LayerIcon/>,
-        component: () => <Layout routes={routes} children={<ExampleContainer/>}/>,
+        icon: <LayerIcon />,
+        component: () => <Layout><ExampleContainer /></Layout>,
       },
       users: {
         name: 'Charts',
         path: '/charts',
         exact: true,
         hidden: false,
-        icon: <ChartIcon/>,
-        component: () => <Layout routes={routes} children={<ExampleContainer/>}/>,
+        icon: <ChartIcon />,
+        component: () => <Layout><ExampleContainer /></Layout>,
       },
     },
   },
@@ -71,8 +70,8 @@ const routes: RouteMap = {
         path: '/help',
         exact: true,
         hidden: false,
-        icon: <InfoIcon/>,
-        component: () => <Layout routes={routes} children={<ExampleContainer/>}/>,
+        icon: <InfoIcon />,
+        component: () => <Layout><ExampleContainer /></Layout>,
       },
     },
   },
@@ -86,8 +85,7 @@ const routes: RouteMap = {
         exact: false,
         hidden: true,
         icon: null,
-        component: props =>
-          <Layout routes={routes} children={<ExampleContainer {...props} />}/>,
+        component: ({ match }) => <Layout><ExampleContainer match={match} /></Layout>,
       },
     },
   },

@@ -1,15 +1,17 @@
 import React from 'react';
-import clsx from 'clsx';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Container from '@material-ui/core/Container';
+import {
+  CssBaseline,
+  Drawer,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Container,
+  createStyles,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
 import { Menu as MenuIcon, ChevronLeft as ChevronLeftIcon } from '@material-ui/icons';
-import { RouteMap } from './Routes';
 import DrawerItemList from './Components/DrawerItemList';
 
 const styles = makeStyles((theme: Theme) => createStyles({
@@ -23,7 +25,7 @@ const styles = makeStyles((theme: Theme) => createStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    padding: '0 8px',
+    padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
   },
   appBar: {
@@ -91,56 +93,56 @@ const styles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const Layout: React.FunctionComponent<{
-  children: React.ReactElement,
-  routes: RouteMap,
-}> = ({ children, routes }) => {
+const Layout: React.FC = ({ children }) => {
   const classes = styles();
   const [open, setOpen] = React.useState(true);
 
   return <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={() => {
-              setOpen(true);
-            }}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+    <CssBaseline />
+    <AppBar position="absolute" className={`${classes.appBar} ${open && classes.appBarShift}`}>
+      <Toolbar className={classes.toolbar}>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          onClick={() => {
+            setOpen(true);
+          }}
+          className={`${classes.menuButton} ${open && classes.menuButtonHidden}`}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+          Dashboard
+        </Typography>
+      </Toolbar>
+    </AppBar>
+    <Drawer
+      variant="permanent"
+      classes={{
+        paper: `${classes.drawerPaper} ${!open && classes.drawerPaperClose}`,
+      }}
+      open={open}
+    >
+      <div className={classes.toolbarIcon}>
+        <IconButton onClick={() => {
+          setOpen(false);
         }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <IconButton onClick={() => {
-            setOpen(false);
-          }}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <DrawerItemList routes={routes}/>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        >
+          <ChevronLeftIcon />
+        </IconButton>
+      </div>
+      <DrawerItemList />
+    </Drawer>
+    <main className={classes.content}>
+      <div className={classes.appBarSpacer} />
+      <Container maxWidth="lg" className={classes.container}>
+        <div>
           {children}
-        </Container>
-      </main>
-    </div>;
+        </div>
+      </Container>
+    </main>
+  </div>;
 };
 
 export default Layout;

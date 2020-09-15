@@ -1,8 +1,8 @@
 import React from 'react';
-import Routes, { Route as RouteType, RouteSection as RouteSectionType } from './Routes';
 import { Switch, Route } from 'react-router-dom';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
+import Routes, { Route as RouteType, RouteSection as RouteSectionType } from './Routes';
 import NotFoundScreen from './Containers/NotFoundScreen';
 
 // Edit theme
@@ -25,16 +25,14 @@ const createRoutes = () => {
 
   return <Switch>
     {Object.values(Routes).reduce(concatRouteSection, [])}
-    <Route component={NotFoundScreen}/>
+    <Route component={NotFoundScreen} />
   </Switch>;
 };
 
-const App = () => {
-  return (
-    <MuiThemeProvider theme={theme}>
-      {createRoutes()}
-    </MuiThemeProvider>
-  );
-};
+const App = () => (
+  <MuiThemeProvider theme={theme}>
+    {createRoutes()}
+  </MuiThemeProvider>
+);
 
 export default App;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { RouteMap } from '../../Routes';
 import Divider from '@material-ui/core/Divider';
 import {
   ListItem,
@@ -12,6 +11,7 @@ import {
   createStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import routes from '../../Routes';
 
 const styles = makeStyles((theme: Theme) => createStyles({
   link: {
@@ -20,29 +20,26 @@ const styles = makeStyles((theme: Theme) => createStyles({
   },
 }));
 
-const DrawerItemList: React.FunctionComponent<{
-  routes: RouteMap,
-}> = ({ routes }) => {
+const DrawerItemList: React.FC = () => {
   const classes = styles();
 
   return <>
-    {Object.values(routes).filter(section => !section.hidden).map((section, i) => <div key={i}>
-      <Divider component="hr"/>
+    {Object.values(routes).filter(({ hidden }) => !hidden).map((section) => <div key={section.name}>
+      <Divider component="hr" />
       <List component="ul">
         {section.name ? <ListSubheader inset>{section.name}</ListSubheader> : null}
         {Object.values(section.routes)
-          .filter(route => !route.hidden)
-          .map((route, i) => <Link
-              key={i}
-              to={route.path}
-              className={classes.link}
-            >
-              <ListItem button>
-                {route.icon !== null ? <ListItemIcon>{route.icon}</ListItemIcon> : null}
-                <ListItemText primary={route.name}/>
-              </ListItem>
-            </Link>,
-          )}
+          .filter((route) => !route.hidden)
+          .map((route) => <Link
+            key={route.path}
+            to={route.path}
+            className={classes.link}
+          >
+            <ListItem button>
+              {route.icon !== null ? <ListItemIcon>{route.icon}</ListItemIcon> : null}
+              <ListItemText primary={route.name} />
+            </ListItem>
+          </Link>)}
       </List>
     </div>)}
   </>;
